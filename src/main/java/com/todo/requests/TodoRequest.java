@@ -1,8 +1,6 @@
 package com.todo.requests;
 
 import com.todo.models.Todo;
-import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -14,7 +12,6 @@ public class TodoRequest extends Request implements CrudInterface<Todo> {
     public TodoRequest(RequestSpecification reqSpec) {
         super(reqSpec);
     }
-
     @Override
     public Response create(Todo entity) {
         return given()
@@ -26,11 +23,19 @@ public class TodoRequest extends Request implements CrudInterface<Todo> {
 
     @Override
     public Object update(long id, Todo entity) {
-        return null;
+
+        return given()
+                .spec(reqSpec)
+                .body(entity)
+                .when()
+                .put(TODO_ENDPOINT + "/" + id);
     }
 
     @Override
     public Object delete(long id) {
-        return null;
+        return given()
+                .spec(reqSpec)
+                .when()
+                .delete(TODO_ENDPOINT + "/" + id);
     }
 }
