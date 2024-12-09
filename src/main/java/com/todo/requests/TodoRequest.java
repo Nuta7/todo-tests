@@ -7,7 +7,7 @@ import io.restassured.specification.RequestSpecification;
 import static io.restassured.RestAssured.given;
 
 public class TodoRequest extends Request implements CrudInterface<Todo> {
-    private static final String TODO_ENDPOINT = "/todos";
+    private static final String TODO_ENDPOINT = "http://localhost:8080/todos";
 
     public TodoRequest(RequestSpecification reqSpec) {
         super(reqSpec);

@@ -1,6 +1,10 @@
 package com.bhft.todo.put;
 
 import com.bhft.todo.BaseTest;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.todo.requests.TodoRequest;
+import com.todo.specs.RequestSpec;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
@@ -19,6 +23,7 @@ public class PutTodosTests extends BaseTest {
     public void setupEach() {
         deleteAllTodos();
     }
+    TodoRequest todoRequestValidAuth = new TodoRequest(RequestSpec.authSpec());
 
     /**
      * TC1: Обновление существующего TODO корректными данными.
@@ -33,18 +38,7 @@ public class PutTodosTests extends BaseTest {
         Todo updatedTodo = new Todo(1, "Updated Task", true);
 
         // Отправляем PUT запрос для обновления
-        given()
-                .filter(new ResponseLoggingFilter())
-                .contentType(ContentType.JSON)
-                .body(updatedTodo)
-                .when()
-                .put("/todos/" + updatedTodo.getId())
-                .then()
-                .statusCode(200);
-                //.contentType(ContentType.JSON)
-//                .body("id", equalTo(1))
-//                .body("text", equalTo("Updated Task"))
-//                .body("completed", equalTo(true));
+        Assertions.assertEquals(200, ((Response) todoRequestValidAuth.update(1, updatedTodo)).getStatusCode());
 
         // Проверяем, что данные были обновлены
         Todo[] todos = given()
@@ -67,63 +61,40 @@ public class PutTodosTests extends BaseTest {
     public void testUpdateNonExistentTodo() {
         // Обновленные данные для несуществующего TODO
         Todo updatedTodo = new Todo(999, "Non-existent Task", true);
-
-        given()
-                .filter(new AllureRestAssured())
-                .contentType(ContentType.JSON)
-                .body(updatedTodo)
-                .when()
-                .put("/todos/" + updatedTodo.getId())
-                .then()
-                .statusCode(404)
-                //.contentType(ContentType.TEXT)
-                .body(is(notNullValue()));
+        Assertions.assertEquals(404, ((Response) todoRequestValidAuth.update(999, updatedTodo)).getStatusCode());
     }
 
     /**
      * TC3: Обновление TODO с отсутствием обязательных полей.
      */
     @Test
-    public void testUpdateTodoWithMissingFields() {
+    public void testUpdateTodoWithMissingFields() throws JsonProcessingException {
         // Создаем TODO для обновления
         Todo originalTodo = new Todo(2, "Task to Update", false);
         createTodo(originalTodo);
 
         // Обновленные данные с отсутствующим полем 'text'
+        ObjectMapper mapper = new ObjectMapper();
         String invalidTodoJson = "{ \"id\": 2, \"completed\": true }";
+        Todo invalidTodo = mapper.readValue(invalidTodoJson, Todo.class);
 
-        given()
-                .filter(new AllureRestAssured())
-                .contentType(ContentType.JSON)
-                .body(invalidTodoJson)
-                .when()
-                .put("/todos/2")
-                .then()
-                .statusCode(401);
-                //.contentType(ContentType.JSON)
-                //.body("error", containsString("Missing required field 'text'"));
+        Assertions.assertEquals(400, ((Response) todoRequestValidAuth.update(2, invalidTodo)).getStatusCode());
     }
 
     /**
      * TC4: Передача некорректных типов данных при обновлении.
      */
     @Test
-    public void testUpdateTodoWithInvalidDataTypes() {
+    public void testUpdateTodoWithInvalidDataTypes() throws JsonProcessingException {
         // Создаем TODO для обновления
         Todo originalTodo = new Todo(3, "Another Task", false);
         createTodo(originalTodo);
 
         // Обновленные данные с некорректным типом поля 'completed'
+        ObjectMapper mapper = new ObjectMapper();
         String invalidTodoJson = "{ \"id\": 3, \"text\": \"Updated Task\", \"completed\": \"notBoolean\" }";
-
-        given()
-                .filter(new AllureRestAssured())
-                .contentType(ContentType.JSON)
-                .body(invalidTodoJson)
-                .when()
-                .put("/todos/3")
-                .then()
-                .statusCode(401);
+        Todo invalidTodo = mapper.readValue(invalidTodoJson, Todo.class);
+        Assertions.assertEquals(400, ((Response) todoRequestValidAuth.update(3, invalidTodo)).getStatusCode());
     }
 
     /**
@@ -136,15 +107,7 @@ public class PutTodosTests extends BaseTest {
         createTodo(originalTodo);
 
         // Отправляем PUT запрос с теми же данными
-        given()
-                .filter(new AllureRestAssured())
-                .contentType(ContentType.JSON)
-                .body(originalTodo)
-                .when()
-                .put("/todos/4")
-                .then()
-                .statusCode(200);
-
+        Assertions.assertEquals(200, ((Response) todoRequestValidAuth.update(4, originalTodo)).getStatusCode());
 
         // Проверяем, что данные не изменились
         Todo[] todo = given()

@@ -24,7 +24,12 @@ public class RequestSpec {
         return requestSpecBuilder;
     }
 
-    public RequestSpecification unauthSpec() {
+    public static RequestSpecification unauthSpec() {
+        BasicAuthScheme basicAuthScheme = new BasicAuthScheme();
+        basicAuthScheme.setUserName("bla");
+        basicAuthScheme.setPassword("bla");
+        baseSpecBuilder().setAuth(basicAuthScheme);
+
         return baseSpecBuilder().build();
     }
 

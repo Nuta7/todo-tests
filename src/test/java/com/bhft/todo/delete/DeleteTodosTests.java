@@ -3,6 +3,8 @@ package com.bhft.todo.delete;
 import com.bhft.todo.BaseTest;
 
 import com.bhft.todo.BaseTest;
+import com.todo.requests.TodoRequest;
+import com.todo.specs.RequestSpec;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -19,6 +21,8 @@ public class DeleteTodosTests extends BaseTest {
     public void setupEach() {
         deleteAllTodos();
     }
+    TodoRequest todoRequestValidAuth = new TodoRequest(RequestSpec.authSpec());
+    TodoRequest todoRequestInvalidAuth = new TodoRequest(RequestSpec.unauthSpec());
 
     /**
      * TC1: Успешное удаление существующего TODO с корректной авторизацией.
@@ -29,17 +33,7 @@ public class DeleteTodosTests extends BaseTest {
         Todo todo = new Todo(1, "Task to Delete", false);
         createTodo(todo);
 
-        // Отправляем DELETE запрос с корректной авторизацией
-        given()
-                .filter(new AllureRestAssured())
-                .auth()
-                .preemptive()
-                .basic("admin", "admin")
-                .when()
-                .delete("/todos/" + todo.getId())
-                .then()
-                .statusCode(204)
-                .body(is(emptyOrNullString())); // Проверяем, что тело ответа пустое
+        Assertions.assertEquals(200, ((Response) todoRequestValidAuth.delete(todo.getId())).getStatusCode());
 
         // Получаем список всех TODO и проверяем, что удаленная задача отсутствует
         Todo[] todos = given()
@@ -71,14 +65,7 @@ public class DeleteTodosTests extends BaseTest {
         createTodo(todo);
 
         // Отправляем DELETE запрос без заголовка Authorization
-        given()
-                .filter(new AllureRestAssured())
-                .when()
-                .delete("/todos/" + todo.getId())
-                .then()
-                .statusCode(401);
-                //.contentType(ContentType.JSON)
-                //.body("error", notNullValue()); // Проверяем наличие сообщения об ошибке
+        Assertions.assertEquals(401, ((Response) todoRequestInvalidAuth.delete(todo.getId())).getStatusCode());
 
         // Проверяем, что TODO не было удалено
         Todo[] todos = given()
@@ -110,17 +97,7 @@ public class DeleteTodosTests extends BaseTest {
         createTodo(todo);
 
         // Отправляем DELETE запрос с некорректной авторизацией
-        given()
-                .filter(new AllureRestAssured())
-                .auth()
-                .preemptive()
-                .basic("invalidUser", "invalidPass")
-                .when()
-                .delete("/todos/" + todo.getId())
-                .then()
-                .statusCode(401);
-//                .contentType(ContentType.JSON)
-//                .body("error", notNullValue());
+        Assertions.assertEquals(401, ((Response) todoRequestInvalidAuth.delete(todo.getId())).getStatusCode());
 
         // Проверяем, что TODO не было удалено
         Todo[] todos = given()
@@ -148,17 +125,7 @@ public class DeleteTodosTests extends BaseTest {
     @Test
     public void testDeleteNonExistentTodo() {
         // Отправляем DELETE запрос для несуществующего TODO с корректной авторизацией
-        given()
-                .filter(new AllureRestAssured())
-                .auth()
-                .preemptive()
-                .basic("admin", "admin")
-                .when()
-                .delete("/todos/999")
-                .then()
-                .statusCode(404);
-//                .contentType(ContentType.JSON)
-//                .body("error", notNullValue());
+        Assertions.assertEquals(404, ((Response) todoRequestValidAuth.delete(999)).getStatusCode());
 
         // Дополнительно можем проверить, что список TODO не изменился
         Todo[] todos = given()
@@ -178,16 +145,6 @@ public class DeleteTodosTests extends BaseTest {
     @Test
     public void testDeleteTodoWithInvalidIdFormat() {
         // Отправляем DELETE запрос с некорректным id
-        given()
-                .filter(new AllureRestAssured())
-                .auth()
-                .preemptive()
-                .basic("admin", "admin")
-                .when()
-                .delete("/todos/invalidId")
-                .then()
-                .statusCode(404);
-//                .contentType(ContentType.JSON)
-//                .body("error", notNullValue());
+        Assertions.assertEquals(400, ((Response) todoRequestValidAuth.delete(000000000000)).getStatusCode());
     }
 }

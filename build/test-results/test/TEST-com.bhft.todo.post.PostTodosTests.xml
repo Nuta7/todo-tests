@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bhft.todo.post.PostTodosTests" tests="5" skipped="0" failures="1" errors="0" timestamp="2024-12-09T22:15:06" hostname="MacBook-Pro-223" time="11.776">
+  <properties/>
+  <testcase name="testCreateTodoWithValidData()" classname="com.bhft.todo.post.PostTodosTests" time="7.304"/>
+  <testcase name="testCreateTodoWithInvalidDataTypes()" classname="com.bhft.todo.post.PostTodosTests" time="0.533">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;400&gt; but was: &lt;201&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;400&gt; but was: &lt;201&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at app//com.bhft.todo.post.PostTodosTests.testCreateTodoWithInvalidDataTypes(PostTodosTests.java:107)
+	at java.base@20.0.2.1/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.base@20.0.2.1/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base@20.0.2.1/java.util.ArrayList.forEach(ArrayList.java:1511)
+</failure>
+  </testcase>
+  <testcase name="testCreateTodoWithMissingFields()" classname="com.bhft.todo.post.PostTodosTests" time="0.662"/>
+  <testcase name="testCreateTodoWithExistingId()" classname="com.bhft.todo.post.PostTodosTests" time="0.231"/>
+  <testcase name="testCreateTodoWithMaxLengthText()" classname="com.bhft.todo.post.PostTodosTests" time="0.268"/>
+  <system-out><![CDATA[Request method:	POST
+Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 1,
+    "text": "New Task",
+    "completed": false
+}
+HTTP/1.1 201 Created
+content-length: 0
+date: Mon, 09 Dec 2024 22:15:12 GMT
+Request method:	POST
+Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 3,
+    "text": "djjdjd",
+    "completed": false
+}
+HTTP/1.1 201 Created
+content-length: 0
+date: Mon, 09 Dec 2024 22:15:16 GMT
+Request method:	POST
+Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 2,
+    "text": null,
+    "completed": true
+}
+HTTP/1.1 400 Bad Request
+content-type: text/plain; charset=utf-8
+content-length: 89
+date: Mon, 09 Dec 2024 22:15:16 GMT
+
+Request body deserialize error: invalid type: null, expected a string at line 1 column 19
+Request method:	POST
+Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 5,
+    "text": "Duplicate Task",
+    "completed": true
+}
+HTTP/1.1 400 Bad Request
+content-length: 0
+date: Mon, 09 Dec 2024 22:15:17 GMT
+Request method:	POST
+Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=application/json, application/javascript, text/javascript, text/json
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 3,
+    "text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "completed": false
+}
+HTTP/1.1 201 Created
+content-length: 0
+date: Mon, 09 Dec 2024 22:15:17 GMT
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

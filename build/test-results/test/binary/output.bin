@@ -1,0 +1,103 @@
+Request method:	POST
+)Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+VHeaders:		Accept=application/json, application/javascript, text/javascript, text/json
+"				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 1,
+    "text": "New Task",
+    "completed": false
+}
+HTTP/1.1 201 Created
+content-length: 0
+$date: Mon, 09 Dec 2024 22:15:12 GMT
+Request method:	POST
+)Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+VHeaders:		Accept=application/json, application/javascript, text/javascript, text/json
+"				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 3,
+    "text": "djjdjd",
+    "completed": false
+}
+HTTP/1.1 201 Created
+content-length: 0
+$date: Mon, 09 Dec 2024 22:15:16 GMT
+Request method:	POST
+)Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+VHeaders:		Accept=application/json, application/javascript, text/javascript, text/json
+"				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 2,
+    "text": null,
+    "completed": true
+}
+HTTP/1.1 400 Bad Request
+(content-type: text/plain; charset=utf-8
+content-length: 89
+$date: Mon, 09 Dec 2024 22:15:16 GMT
+
+ZRequest body deserialize error: invalid type: null, expected a string at line 1 column 19
+Request method:	POST
+)Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+VHeaders:		Accept=application/json, application/javascript, text/javascript, text/json
+"				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 5,
+    "text": "Duplicate Task",
+    "completed": true
+}
+HTTP/1.1 400 Bad Request
+content-length: 0
+$date: Mon, 09 Dec 2024 22:15:17 GMT
+Request method:	POST
+)Request URI:	http://localhost:8080/todos
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+VHeaders:		Accept=application/json, application/javascript, text/javascript, text/json
+"				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "id": 3,
+è    "text": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "completed": false
+}
+HTTP/1.1 201 Created
+content-length: 0
+$date: Mon, 09 Dec 2024 22:15:17 GMT
