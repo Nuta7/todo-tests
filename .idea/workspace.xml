@@ -4,17 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e85e633-b08e-4f13-a076-c76154a33ae6" name="Changes" comment="added ValidatedTodoRequest.java">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="2e85e633-b08e-4f13-a076-c76154a33ae6" name="Changes" comment="changed ValidatedTodoRequest.java&#10;changed tests">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/todo/requests/SearchInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/todo/requests/TodoRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/todo/requests/TodoRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/todo/requests/ValidatedTodoRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/todo/requests/ValidatedTodoRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/bhft/todo/delete/DeleteTodosTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/bhft/todo/delete/DeleteTodosTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/bhft/todo/get/GetTodosTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/bhft/todo/get/GetTodosTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/bhft/todo/post/PostTodosTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/bhft/todo/post/PostTodosTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/bhft/todo/put/PutTodosTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/bhft/todo/put/PutTodosTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.bhft.todo.post.PostTodosTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.bhft.todo.post.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.bhft.todo.post.PostTodosTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/requests/TodoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/requests/TodoRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/requests/ValidatedTodoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/requests/ValidatedTodoRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/todo/specs/RequestSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/todo/specs/RequestSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bhft/todo/delete/DeleteTodosTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bhft/todo/delete/DeleteTodosTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bhft/todo/get/GetTodosTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bhft/todo/get/GetTodosTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bhft/todo/post/PostTodosTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bhft/todo/post/PostTodosTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bhft/todo/put/PutTodosTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bhft/todo/put/PutTodosTests.java" afterDir="false" />
     </list>
@@ -47,6 +65,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -78,6 +97,7 @@
     "Gradle.DeleteTodosTests.executor": "Run",
     "Gradle.DeleteTodosTests.testDeleteExistingTodoWithValidAuth.executor": "Run",
     "Gradle.DeleteTodosTests.testDeleteTodoWithInvalidIdFormat.executor": "Run",
+    "Gradle.GetTodosTests.executor": "Run",
     "Gradle.PostTodosTests.executor": "Run",
     "Gradle.PutTodosTests.executor": "Run",
     "Gradle.PutTodosTests.testUpdateTodoWithInvalidDataTypes.executor": "Run",
@@ -94,7 +114,7 @@
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.PostTodosTests">
+  <component name="RunManager" selected="Gradle.GetTodosTests">
     <configuration name="DeleteTodosTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -119,30 +139,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="DeleteTodosTests.testDeleteExistingTodoWithValidAuth" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.bhft.todo.delete.DeleteTodosTests.testDeleteExistingTodoWithValidAuth&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="DeleteTodosTests.testDeleteTodoWithInvalidIdFormat" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -157,6 +153,30 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;com.bhft.todo.delete.DeleteTodosTests.testDeleteTodoWithInvalidIdFormat&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="GetTodosTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.bhft.todo.get.GetTodosTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -217,11 +237,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GetTodosTests" />
         <item itemvalue="Gradle.PostTodosTests" />
         <item itemvalue="Gradle.PutTodosTests" />
         <item itemvalue="Gradle.DeleteTodosTests.testDeleteTodoWithInvalidIdFormat" />
         <item itemvalue="Gradle.DeleteTodosTests" />
-        <item itemvalue="Gradle.DeleteTodosTests.testDeleteExistingTodoWithValidAuth" />
       </list>
     </recent_temporary>
   </component>
@@ -250,12 +270,21 @@
       <option name="project" value="LOCAL" />
       <updated>1733698563465</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="changed ValidatedTodoRequest.java&#10;changed tests">
+      <option name="closed" value="true" />
+      <created>1733782750555</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733782750560</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="added ValidatedTodoRequest.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ValidatedTodoRequest.java" />
+    <MESSAGE value="changed ValidatedTodoRequest.java&#10;changed tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed ValidatedTodoRequest.java&#10;changed tests" />
   </component>
 </project>

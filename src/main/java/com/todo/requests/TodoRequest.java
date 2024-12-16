@@ -6,12 +6,13 @@ import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
-public class TodoRequest extends Request implements CrudInterface<Todo> {
+public class TodoRequest extends Request implements CrudInterface<Todo>, SearchInterface<Todo> {
     private static final String TODO_ENDPOINT = "http://localhost:8080/todos";
 
     public TodoRequest(RequestSpecification reqSpec) {
         super(reqSpec);
     }
+
     @Override
     public Response create(Todo entity) {
         return given()
@@ -22,7 +23,7 @@ public class TodoRequest extends Request implements CrudInterface<Todo> {
     }
 
     @Override
-    public Object update(long id, Todo entity) {
+    public Response update(long id, Todo entity) {
 
         return given()
                 .spec(reqSpec)
@@ -32,10 +33,26 @@ public class TodoRequest extends Request implements CrudInterface<Todo> {
     }
 
     @Override
-    public Object delete(long id) {
+    public Response delete(long id) {
         return given()
                 .spec(reqSpec)
                 .when()
                 .delete(TODO_ENDPOINT + "/" + id);
     }
+
+
+        @Override
+        public Response readAll ( int offset, int limit){
+            return given()
+                    .queryParam("offset", offset)
+                    .queryParam("limit", limit)
+                    .when()
+                    .get(TODO_ENDPOINT);
+        }
+
+        public Response readAll () {
+            return given()
+                    .when()
+                    .get(TODO_ENDPOINT);
+        }
 }

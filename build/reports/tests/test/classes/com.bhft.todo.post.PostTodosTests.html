@@ -23,13 +23,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">5</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">2</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">8.998s</div>
+<div class="counter">6.181s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">80%</div>
+<div class="percent">50%</div>
 <p>successful</p>
 </div>
 </td>
@@ -73,20 +73,70 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
+<a name="testCreateTodoWithExistingId()"></a>
+<h3 class="failures">testCreateTodoWithExistingId()</h3>
+<span class="code">
+<pre>java.lang.AssertionError: 1 expectation failed.
+Expected content-type &quot;TEXT&quot; doesn't match actual content-type &quot;&quot;.
+
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:512)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:696)
+	at io.restassured.internal.ResponseSpecificationImpl.this$2$validateResponseIfRequired(ResponseSpecificationImpl.groovy)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:198)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:62)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at io.restassured.internal.ResponseSpecificationImpl.contentType(ResponseSpecificationImpl.groovy:435)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.contentType(ValidatableResponseOptionsImpl.java:220)
+	at com.bhft.todo.post.PostTodosTests.testCreateTodoWithExistingId(PostTodosTests.java:127)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+</pre>
+</span>
+</div>
+<div class="test">
 <a name="testCreateTodoWithInvalidDataTypes()"></a>
 <h3 class="failures">testCreateTodoWithInvalidDataTypes()</h3>
 <span class="code">
-<pre>org.opentest4j.AssertionFailedError: expected: &lt;400&gt; but was: &lt;201&gt;
-	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
-	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
-	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
-	at app//com.bhft.todo.post.PostTodosTests.testCreateTodoWithInvalidDataTypes(PostTodosTests.java:107)
-	at java.base@20.0.2.1/java.lang.reflect.Method.invoke(Method.java:578)
-	at java.base@20.0.2.1/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base@20.0.2.1/java.util.ArrayList.forEach(ArrayList.java:1511)
+<pre>java.lang.AssertionError: 1 expectation failed.
+Expected status code &lt;400&gt; but was &lt;201&gt;.
+
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:57)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:512)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:696)
+	at io.restassured.internal.ResponseSpecificationImpl.this$2$validateResponseIfRequired(ResponseSpecificationImpl.groovy)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:198)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:62)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:135)
+	at io.restassured.specification.ResponseSpecification$statusCode$0.callCurrent(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:143)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at com.bhft.todo.post.PostTodosTests.testCreateTodoWithInvalidDataTypes(PostTodosTests.java:107)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 </pre>
 </span>
 </div>
@@ -102,28 +152,23 @@
 </tr>
 </thead>
 <tr>
-<td class="success">testCreateTodoWithExistingId()</td>
-<td class="success">0.231s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="failures">testCreateTodoWithInvalidDataTypes()</td>
-<td class="failures">0.533s</td>
+<td class="failures">testCreateTodoWithExistingId()</td>
+<td class="failures">0.251s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">testCreateTodoWithMaxLengthText()</td>
-<td class="success">0.268s</td>
-<td class="success">passed</td>
+<td class="failures">testCreateTodoWithInvalidDataTypes()</td>
+<td class="failures">0.313s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">testCreateTodoWithMissingFields()</td>
-<td class="success">0.662s</td>
+<td class="success">0.291s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateTodoWithValidData()</td>
-<td class="success">7.304s</td>
+<td class="success">5.326s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -150,7 +195,7 @@ Body:
 }
 HTTP/1.1 201 Created
 content-length: 0
-date: Mon, 09 Dec 2024 22:15:12 GMT
+date: Mon, 16 Dec 2024 20:52:57 GMT
 Request method:	POST
 Request URI:	http://localhost:8080/todos
 Proxy:			&lt;none&gt;
@@ -170,7 +215,7 @@ Body:
 }
 HTTP/1.1 201 Created
 content-length: 0
-date: Mon, 09 Dec 2024 22:15:16 GMT
+date: Mon, 16 Dec 2024 20:52:57 GMT
 Request method:	POST
 Request URI:	http://localhost:8080/todos
 Proxy:			&lt;none&gt;
@@ -191,7 +236,7 @@ Body:
 HTTP/1.1 400 Bad Request
 content-type: text/plain; charset=utf-8
 content-length: 89
-date: Mon, 09 Dec 2024 22:15:16 GMT
+date: Mon, 16 Dec 2024 20:52:57 GMT
 
 Request body deserialize error: invalid type: null, expected a string at line 1 column 19
 Request method:	POST
@@ -213,27 +258,7 @@ Body:
 }
 HTTP/1.1 400 Bad Request
 content-length: 0
-date: Mon, 09 Dec 2024 22:15:17 GMT
-Request method:	POST
-Request URI:	http://localhost:8080/todos
-Proxy:			&lt;none&gt;
-Request params:	&lt;none&gt;
-Query params:	&lt;none&gt;
-Form params:	&lt;none&gt;
-Path params:	&lt;none&gt;
-Headers:		Accept=application/json, application/javascript, text/javascript, text/json
-				Content-Type=application/json
-Cookies:		&lt;none&gt;
-Multiparts:		&lt;none&gt;
-Body:
-{
-    &quot;id&quot;: 3,
-    &quot;text&quot;: &quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;,
-    &quot;completed&quot;: false
-}
-HTTP/1.1 201 Created
-content-length: 0
-date: Mon, 09 Dec 2024 22:15:17 GMT
+date: Mon, 16 Dec 2024 20:52:58 GMT
 </pre>
 </span>
 </div>
@@ -245,7 +270,7 @@ date: Mon, 09 Dec 2024 22:15:17 GMT
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.8</a> at 9 дек. 2024 г., 23:15:18</p>
+<a href="http://www.gradle.org">Gradle 8.8</a> at 16 дек. 2024 г., 21:52:59</p>
 </div>
 </div>
 </body>

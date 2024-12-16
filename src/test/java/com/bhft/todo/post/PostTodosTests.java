@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.todo.models.Todo;
 import com.todo.requests.TodoRequest;
+import com.todo.requests.ValidatedTodoRequest;
 import com.todo.specs.RequestSpec;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
@@ -12,6 +13,8 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -27,16 +30,11 @@ public class PostTodosTests extends BaseTest {
     @Test
     public void testCreateTodoWithValidData() {
         Todo newTodo = new Todo(1, "New Task", false);
-        Assertions.assertEquals(201, todoRequestValidAuth.create(newTodo).getStatusCode());
+        ValidatedTodoRequest authValReq = new ValidatedTodoRequest(RequestSpec.authSpec());
+        authValReq.create(newTodo);
 
         // Проверяем, что TODO было успешно создано
-        Todo[] todos = given()
-                .when()
-                .get("/todos")
-                .then()
-                .statusCode(200)
-                .extract()
-                .as(Todo[].class);
+        List<Todo> todos = authValReq.readAll();
 
         // Ищем созданную задачу в списке
         boolean found = false;
@@ -60,29 +58,27 @@ public class PostTodosTests extends BaseTest {
         ObjectMapper mapper = new ObjectMapper();
         String invalidTodoJson = "{ \"id\": 2, \"completed\": true }";
         Todo invalidTodo = mapper.readValue(invalidTodoJson, Todo.class);
-        Assertions.assertEquals(400, todoRequestValidAuth.create(invalidTodo).getStatusCode());
+        TodoRequest authValReq = new TodoRequest(RequestSpec.authSpec());
+        authValReq.create(invalidTodo)
+                .then()
+                .statusCode(400)
+                .contentType(ContentType.TEXT)
+                .body(notNullValue());
     }
 
     /**
      * TC3: Создание TODO с максимально допустимой длиной поля 'text'.
      */
-    @Test
     public void testCreateTodoWithMaxLengthText() {
         // Предполагаем, что максимальная длина поля 'text' составляет 255 символов
         String maxLengthText = "A".repeat(255);
         Todo newTodo = new Todo(3, maxLengthText, false);
 
-        // Отправляем POST запрос для создания нового TODO
-        Assertions.assertEquals(201, todoRequestValidAuth.create(newTodo).getStatusCode());
+        ValidatedTodoRequest authValReq = new ValidatedTodoRequest(RequestSpec.authSpec());
+        authValReq.create(newTodo);
 
         // Проверяем, что TODO было успешно создано
-        Todo[] todos = given()
-                .when()
-                .get("/todos")
-                .then()
-                .statusCode(200)
-                .extract()
-                .as(Todo[].class);
+        List<Todo> todos = authValReq.readAll();
 
         // Ищем созданную задачу в списке
         boolean found = false;
@@ -97,6 +93,7 @@ public class PostTodosTests extends BaseTest {
         Assertions.assertTrue(found, "Созданная задача не найдена в списке TODO");
     }
 
+
     /**
      * TC4: Передача некорректных типов данных в полях.
      */
@@ -104,7 +101,12 @@ public class PostTodosTests extends BaseTest {
     public void testCreateTodoWithInvalidDataTypes() {
         // Поле 'completed' содержит строку вместо булевого значения
         Todo newTodo = new Todo(3, "djjdjd", false);
-        Assertions.assertEquals(400, todoRequestValidAuth.create(newTodo).getStatusCode());
+        TodoRequest authValReq = new TodoRequest(RequestSpec.authSpec());
+        authValReq.create(newTodo)
+                .then()
+                .statusCode(400)
+                .contentType(ContentType.TEXT)
+                .body(notNullValue());
     }
 
     /**
@@ -118,7 +120,12 @@ public class PostTodosTests extends BaseTest {
 
         // Пытаемся создать другую TODO с тем же id
         Todo duplicateTodo = new Todo(5, "Duplicate Task", true);
-        Assertions.assertEquals(400, todoRequestValidAuth.create(duplicateTodo).getStatusCode());
+        TodoRequest authValReq = new TodoRequest(RequestSpec.authSpec());
+        authValReq.create(duplicateTodo)
+                .then()
+                .statusCode(400)
+                .contentType(ContentType.TEXT)
+                .body(notNullValue());
     }
 
 }

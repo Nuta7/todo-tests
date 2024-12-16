@@ -3,39 +3,61 @@ package com.todo.requests;
 
 import com.todo.models.Todo;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.apache.http.HttpStatus;
+
+import java.util.List;
 
 
-public class ValidatedTodoRequest {
-    public ValidatedTodoRequest(TodoRequest todoRequest) {
-        this.todoRequest = todoRequest;
-    }
+public class ValidatedTodoRequest extends Request implements CrudInterface<Todo>, SearchInterface<Todo> {
+    private static final String TODO_ENDPOINT = "/todos";
 
     private TodoRequest todoRequest;
 
-    public <T> T create(Todo entity, Class<T> responseType) {
-        Response response = todoRequest.create(entity);
-        return handleResponse(response, responseType);
+    public ValidatedTodoRequest(RequestSpecification reqSpec) {
+        super(reqSpec);
+        todoRequest = new TodoRequest(reqSpec);
     }
 
-    public <T> T update(long id, Todo entity, Class<T> responseType) {
-        Object response = todoRequest.update(id, entity);
-        return handleResponse((Response) response, responseType);
+    @Override
+    public String create(Todo entity) {
+        return todoRequest.create(entity)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_CREATED).extract().asString();
     }
 
-    public <T> T delete(long id, Class<T> responseType) {
-        Object response = todoRequest.delete(id);
-        return handleResponse((Response) response, responseType);
+    @Override
+    public Todo update(long id, Todo entity) {
+        return todoRequest.update(id, entity)
+                .then()
+                .statusCode(HttpStatus.SC_OK).extract().as(Todo.class);
     }
 
-    private <T> T handleResponse(Response response, Class<T> responseType) {
-        int statusCode = response.getStatusCode();
+    @Override
+    public String delete(long id) {
+        return todoRequest.delete(id)
+                .then()
+                .statusCode(HttpStatus.SC_NO_CONTENT)
+                .extract().body()
+                .asString();
+    }
 
-        if (statusCode >= 400) {
-            throw new RuntimeException("Ошибка запроса: Статус код " + statusCode + ", Тело ответа: " + response.getBody().asString());
-        }
-        if (responseType != null && (statusCode == 200 || statusCode == 201)) {
-            return response.getBody().as(responseType);
-        }
-        return null;
+    @Override
+    public List<Todo> readAll(int offset, int limit) {
+        Todo[] todos = todoRequest.readAll(offset, limit)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().as(Todo[].class);
+        return List.of(todos);
+    }
+
+    public List<Todo> readAll() {
+        Todo[] todos = todoRequest.readAll()
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().as(Todo[].class);
+        return List.of(todos);
     }
 }
+
